@@ -2,7 +2,12 @@ const express = require("express");
 const app = express();
 const PORT = process.env.PORT || 5555;
 
-app.use((req,res,next)=>{
+
+const mongoDB = require("./db");
+
+mongoDB()
+
+app.use((req,res,next)=>{ 
   res.setHeader("Access-Control-Allow-Origin","http://localhost:3000");
   res.header(
     "Access-control-Allow-Headers",
@@ -13,10 +18,9 @@ app.use((req,res,next)=>{
 
 app.use(express.json());
 app.use('/api', require("./Routes/CreatUser"));
+app.use('/api', require('./Routes/DisplayData'));
 // -------db---------
-const mongoDB = require("./db");
 
-mongoDB()
 
 
 app.get("/", (req, res) => {

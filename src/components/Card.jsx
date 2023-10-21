@@ -1,12 +1,23 @@
 import React from 'react'
 
-export default function Card() {
+export default function Card({food}) {
+
+    const options = food.options[0];
+    const priceOptions = Object.keys(options);
+    // console.log(priceOptions);
+
+
+    const imgStyle = {
+        "height": "150px",
+        "objectFit": "cover",
+        "overflow": "hidden"
+    }
   return (
-    <div className="card mt-4 m-4" style={ {"width": "18rem", "maxHeight" : "360px"} }>
-        <img src="https://source.unsplash.com/random/300x150/?latte" className="card-img-top" alt="..." />
+    <div className="card mt-4 m-4" style={ {"width": "18rem", "maxHeight" : "300px"} }>
+        <img src={food.img} className="card-img-top h-50" style={imgStyle} alt="..." />
         <div className="card-body">
-            <h5 className="card-title">Card title</h5>
-            <p className="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
+            <h5 className="card-title">{food.name}</h5>
+            {/* <p className="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p> */}
             <div className="container w-100">
                 <select className="m-2 h-100 bg-danger rounded">
                     {Array.from( Array(6), (e, i)=>{
@@ -16,8 +27,10 @@ export default function Card() {
                     } )}  
                 </select>
                 <select className="m-2 h-100 bg-danger rounded">
-                    <option key={1} value={"half"} > half</option>
-                    <option key={2} value={"full"} > full</option>
+                {
+                    priceOptions.map( data => <option key={data} value={data} >{data}</option> )
+                }
+
                 </select>
                 <div className="d-inline fs-5">
                     Total Price

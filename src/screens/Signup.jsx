@@ -35,7 +35,7 @@ export default function Signup() {
   return (
     <>
         <Navbar/>
-            <div className='container'>
+            <div className='container p-5'>
                 <form onSubmit={handleSubmit} action="/signup" method="post">
                     <div className="mb-3">
                         <label className="form-label">Name</label>
