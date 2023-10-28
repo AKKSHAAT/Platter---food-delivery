@@ -1,7 +1,8 @@
 const express = require("express");
 const router = express.Router();
 
-router.post("/foodData", (req,res)=>{
+//for react to get data form db
+router.post("/foodData", (req,res)=>{ 
     // res.send("loo");
     try {
         // console.log(global.food)

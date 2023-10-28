@@ -35,26 +35,27 @@ export default function Signup() {
   return (
     <>
         <Navbar/>
-            <div className='container p-5'>
-                <form onSubmit={handleSubmit} action="/signup" method="post">
+            <div className='container p-5 d-flex justify-content-between'>
+                <form onSubmit={handleSubmit} action="/signup" method="post" className="w-50">
+                <legend>Sign up</legend>
                     <div className="mb-3">
                         <label className="form-label">Name</label>
-                        <input type="text" className="form-control" name="name" value={credentials.name} onChange={handlecChange} />
+                        <input type="text" className="form-control w-75" name="name" value={credentials.name} onChange={handlecChange} />
                     </div>
 
                     <div className="mb-3">
                         <label htmlFor="InputEmail" className="form-label">Email</label>
-                        <input type="email" className="form-control" id="InputEmail" name="email" value={credentials.email} onChange={handlecChange} />
+                        <input type="email" className="form-control w-75" id="InputEmail" name="email" value={credentials.email} onChange={handlecChange} />
                     </div>
 
                     <div className="mb-3">
                         <label htmlFor="InputPassword1" className="form-label">Password</label>
-                        <input type="password" className="form-control" id="InputPassword1" name="password" value={credentials.password} onChange={handlecChange}/>
+                        <input type="password" className="form-control w-75" id="InputPassword1" name="password" value={credentials.password} onChange={handlecChange}/>
                     </div>
 
                     <div className="mb-3">
                         <label htmlFor="address" className="form-label">Address</label>
-                        <input type="text" className="form-control" id="address" name="location" value={credentials.location} onChange={handlecChange}/>
+                        <input type="text" className="form-control w-75" id="address" name="location" value={credentials.location} onChange={handlecChange}/>
                     </div>
 
                     {/* <div className="mb-3 form-check">
@@ -66,6 +67,10 @@ export default function Signup() {
                     <button type="submit" className="mr-3 btn btn-danger">Submit</button>
                     <Link to="/login" className="m-3 btn btn-outline-danger">Alredy a User?</Link>
                 </form>
+                <div className="text-center" >
+                    <img className="rounded"  src="https://source.unsplash.com/random/500x250/?daal"/>
+                    <h1>Platter</h1>
+                </div>
             </div>
         <Footer/>
     </>

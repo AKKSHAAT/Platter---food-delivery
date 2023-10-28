@@ -1,5 +1,3 @@
-import Search from "./Search";
-
 export default function Carousel() {
   return (
         <div id="carouselIndicators" className="carousel slide" data-bs-ride="carousel">

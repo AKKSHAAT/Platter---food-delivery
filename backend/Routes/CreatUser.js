@@ -1,6 +1,7 @@
 const express = require("express");
 const router = express.Router();
 const User = require("../models/User");
+const Order = require("../models/Orders");
 const { body, validationResult } = require("express-validator");
 const bcrypt = require('bcrypt');
 const jwt = require("jsonwebtoken");
@@ -26,6 +27,10 @@ router.post("/createuser",
         location: user.location,
         email: user.email,
         password: passwordHash,
+      })
+      await Order.create({
+        email: user.email,
+        order_data: []
       })
       .then((user) => {
         res.status(201).json({ success: true });
@@ -57,13 +62,13 @@ router.post("/loginuser",
                                                  success: false});
                 }
 
+                // check password and login
                 bcrypt.compare( user.password, userAccountFound.password, (error, result)=>{
                   if(result == true) { 
                     const data = {
-                      user: {
-                        id: userAccountFound.id
-                      }
+                      user: { id: userAccountFound.id }
                     }
+                    
                     const authToken = jwt.sign(data, jwtSecret);
                     return res.status(200).json({success: true, authToken: authToken}); 
                   } 

@@ -4,7 +4,7 @@ import Card from "../components/Card"
 
 import Carousel from "../components/Carousel";
 import { useEffect, useState } from "react";
-export default function Home() {
+export default function Home() {  
 
     const [foodData, setFoodData] = useState([]);
     const [foodCategory, setFoodCategory] = useState([]);
@@ -18,7 +18,9 @@ export default function Home() {
             }
         });
         response = await response.json();
-        // console.log(response[1]);
+        if (!response) {
+            console.log("chutiya");
+        }
         setFoodCategory(response[1]);
         setFoodData(response[0]);
     }
@@ -57,7 +59,7 @@ export default function Home() {
                                     <hr></hr>
                                         {
                                             foodData != []?
-                                            foodData.filter( (food) => (food.CategoryName == catogry.CategoryName) && (food.name.toLowerCase().includes(search.toLowerCase())) ) 
+                                            foodData.filter( (food) => (food.CategoryName === catogry.CategoryName) && (food.name.toLowerCase().includes(search.toLowerCase())) ) 
                                             .map(food=> {
                                                     return(
                                                         <div  className="col-lg-4 col-12" style={{"textAlign": "center"}}>

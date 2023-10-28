@@ -41,6 +41,7 @@ export default function Login() {
     if (json.success) {
       console.log("logged in");
 
+      localStorage.setItem("userEmail", credentials.email);
       localStorage.setItem("authToken", json.authToken);
       console.log(localStorage.getItem("authToken"));
       navigate("/")
@@ -50,15 +51,16 @@ export default function Login() {
   return (
     <div>
       <Navbar />
-      <div className="container p-5">
-        <form onSubmit={handleSubmit} action="/signup" method="post">
+      <div className="container p-5 d-flex justify-content-between">
+        <form onSubmit={handleSubmit} action="/signup" method="post" className="w-50">
+          <legend>Login</legend>
           <div className="mb-3">
             <label htmlFor="InputEmail" className="form-label">
               Email
             </label>
             <input
               type="email"
-              className="form-control"
+              className="form-control w-75"
               id="InputEmail"
               name="email"
               value={credentials.email}
@@ -72,7 +74,7 @@ export default function Login() {
             </label>
             <input
               type="password"
-              className="form-control"
+              className="form-control w-75"
               id="InputPassword1"
               name="password"
               value={credentials.password}
@@ -87,6 +89,11 @@ export default function Login() {
             Create an Account
           </Link>
         </form>
+        <div className="text-center" >
+              <img className="rounded"  src="https://source.unsplash.com/random/500x250/?daal"/>
+              <h1>Platter</h1>
+        </div>
+  
       </div>
       <Footer />
     </div>
