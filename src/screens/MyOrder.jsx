@@ -35,10 +35,10 @@ export default function MyOrder() {
         <>
             <Navbar />
                 <div>
-                    { typeof(orderData) != 'string' ? 
-                        <div className='card'>
+                    { typeof(orderData) !== 'undefined' && orderData !== null ?
+                        <div >
                             {orderData.reverse().map( (order, index) => {
-                                return(
+                                <div className='card m-5 w-50'>
                                     <div key={index} className='card-body'>
                                         <h2 className='card-title'>{order.name}</h2>
                                         <div className='card-text'>
@@ -52,11 +52,11 @@ export default function MyOrder() {
                                             }
                                         </div>
                                     </div>
-
-                                )
-                            } )}
+                                </div>
+                                } 
+                            )}
                         </div>
-                        : <h1>{orderData}</h1>
+                        :<h1>no orders</h1>
                     }
                 </div>
             <Footer />

@@ -6,7 +6,9 @@ router.post("/myOrder", async (req,res)=>{
     const userEmailFound = await Order.findOne({'email': req.body.email})
     try{
         if(userEmailFound === null){
-            res.send("Email not found")
+            let msg = []
+            msg.push( {"messege": "Email not found"})
+            res.send(JSON.stringify(msg));
         }
         else {
             const userOrders = userEmailFound.order_data;
@@ -28,11 +30,12 @@ router.post("/myOrder", async (req,res)=>{
                 res.send(JSON.stringify(orderToSend));
             }            
             else {
-                res.send("orders not found");
+                let msg = [];
+                msg.push({})
+                res.send(JSON.stringify(msg));
             }
         }
-    } 
-    catch(error) { 
+    } catch(error) { 
         console.log(error);
     }
         
