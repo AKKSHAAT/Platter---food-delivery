@@ -7,7 +7,7 @@ router.post("/myOrder", async (req,res)=>{
     try{
         if(userEmailFound === null){
             let msg = []
-            msg.push( {"messege": "Email not found"})
+            msg.push( {"message": "Email not found"})
             res.send(JSON.stringify(msg));
         }
         else {
@@ -31,7 +31,7 @@ router.post("/myOrder", async (req,res)=>{
             }            
             else {
                 let msg = [];
-                msg.push({})
+                msg.push({"message": "no orders"})
                 res.send(JSON.stringify(msg));
             }
         }

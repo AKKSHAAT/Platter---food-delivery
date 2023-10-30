@@ -36,30 +36,43 @@ export default function MyOrder() {
             <Navbar />
                 <div>
                     { typeof(orderData) !== 'undefined' && orderData !== null ?
-                        <div >
-                            {orderData.reverse().map( (order, index) => {
-                                <div className='card m-5 w-50'>
-                                    <div key={index} className='card-body'>
-                                        <h2 className='card-title'>{order.name}</h2>
-                                        <div className='card-text'>
-                                            <p>qty: {order.qty}</p>
-                                            <p>size: {order.size}</p>
-                                            <p>size: {order.price}</p>
-                                            <hr></hr>
-                                            { Object.keys(order).includes('Order_date')?
-                                            <p>date : {order.Order_date}</p>
-                                            : <></>
-                                            }
+                        
+                        <div>
+                        {orderData.reverse().map((order, index) => {
+                            return (
+                                <div key={index}>
+                                    { 'message' in order ? (
+                                        <h1>{order.message}</h1>
+                                    ) 
+                                    : 
+                                    (<div className='card m-5 w-50'>
+                                        <div className='card-body'>
+                                            <h2 className='card-title'>{order.name}</h2>
+                                            <div className='card-text'>
+                                                <p>qty: {order.qty}</p>
+                                                <p>size: {order.size}</p>
+                                                <p>size: {order.price}</p>
+                                                <hr></hr>
+                                                { Object.keys(order).includes('Order_date')?
+                                                <p>date : {order.Order_date}</p>
+                                                : <></>
+                                                }
+                                            </div>
                                         </div>
-                                    </div>
+                                    </div> 
+                                    )}
                                 </div>
-                                } 
-                            )}
+                            );
+                        })}
                         </div>
-                        :<h1>no orders</h1>
+                        :
+                        <h1>Plese wait..</h1>
                     }
                 </div>
             <Footer />
         </>
     )
 }
+
+
+
