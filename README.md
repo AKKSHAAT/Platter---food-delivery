@@ -1,4 +1,4 @@
-# Platter - Food Delivery Application
+# Platter🍜 - Food Delivery Application
 
 Platter is a modern food delivery application developed using the MERN (MongoDB, Express, React, Node.js) stack. It's designed to simplify the process of ordering and delivering delicious meals from your favorite local restaurants.
 
